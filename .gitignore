@@ -1,0 +1,21 @@
+.DS_Store
+
+### Laravel ###
+/ApiServer/node_modules
+/ApiServer/public/hot
+/ApiServer/public/storage
+/ApiServer/storage/*.key
+/ApiServer/vendor
+ApiServer/.env
+ApiServer/.env.backup
+ApiServer/.phpunit.result.cache
+ApiServer/Homestead.json
+ApiServer/Homestead.yaml
+ApiServer/npm-debug.log
+ApiServer/yarn-error.log
+
+### Swift ###
+
+/TestApi/Pods/
+TestApi/Podfile.lock
+TestApi/*.xcworkspace

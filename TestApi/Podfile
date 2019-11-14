@@ -1,0 +1,25 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'TestApi' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TestApi
+
+  # Elegant HTTP Networking in Swift
+  pod 'Alamofire'
+  
+  # The better way to deal with JSON data in Swift.
+  pod 'SwiftyJSON'
+  
+  # A lightweight, pure-Swift library for downloading and caching images from the web.
+  pod 'Kingfisher'
+  
+  # A publish/subscribe EventBus optimized for iOS
+  pod 'SwiftEventBus'
+
+  # Material Components - Snackbar
+  pod 'MaterialComponents/Snackbar'
+
+end

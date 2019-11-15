@@ -15,7 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('api/check-code', 'RestAPIController@postCode');
-Route::get('api/home-data', 'RestAPIController@getHomeInfo');
-Route::get('api/serv-data', 'RestAPIController@getServInfo');
-Route::get('api/ab-data', 'RestAPIController@getABInfo');
+Route::post('api/log-request', 'RestAPIController@postLogRequest');
+Route::get('api/info', 'RestAPIController@getInfo');

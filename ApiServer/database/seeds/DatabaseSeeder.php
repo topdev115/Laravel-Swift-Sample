@@ -12,11 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CodeSeeder::class,
-            MainSeeder::class,
-            ServsSeeder::class,
-            LinkSeeder::class,
-            ABSeeder::class
+            DBSeeder::class
         ]);
 
         //$this->command->info('Seed successfully.');

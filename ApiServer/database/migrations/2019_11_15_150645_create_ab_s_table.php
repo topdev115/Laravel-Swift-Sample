@@ -15,6 +15,7 @@ class CreateABSTable extends Migration
     {
         Schema::create('ab_s', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('main_id');
             $table->string('text_field1', 255)->nullable();
             $table->string('text_field2', 255)->nullable();
             $table->string('image_field1', 255)->nullable();

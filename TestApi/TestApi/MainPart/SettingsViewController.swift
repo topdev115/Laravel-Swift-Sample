@@ -10,8 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+import SwiftEventBus
+
 class SettingsViewController: UIViewController {
     @IBOutlet weak var codeTextField: PaddingTextField!
+    @IBOutlet weak var getInfoButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,8 @@ class SettingsViewController: UIViewController {
         codeTextField.delegate = self
         
         codeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        getInfoButton.layer.cornerRadius = getInfoButton.bounds.size.height / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,20 +45,28 @@ class SettingsViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @IBAction func onSaveSetting(_ sender: UIBarButtonItem) {
+    @IBAction func onLogRequest(_ sender: UIButton) {
         view.endEditing(true)
+        
+        print(getIPAddress(for: .ipv4))
+        print(getIPAddress(for: .ipv6))
+        print(getIPAddress(for: .cellular))
+        print(getIPAddress(for: .wifi))
         
         if !isValidCode(code: codeTextField.text!) {
             codeTextField.warning()
             
-            let alert = UIAlertController(title: APP_NAME, message: "Invalid Code", preferredStyle: .alert)
+            let alert = UIAlertController(title: APP_NAME, message: "Invalid Code!\nPlease enter 4 digits", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
             return
         }
         
-        save(code: codeTextField.text!)
+        let ipAddress = getIPAddress(for: .ipv4) ?? ""
+        let version = UIDevice.current.systemVersion
+        
+        logRequest(code: codeTextField.text!, IPAddress: ipAddress, iOSVersion: version)
     }
     
     func isValidCode(code: String) -> Bool {
@@ -64,13 +77,13 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    func save(code: String) {
+    func logRequest(code: String, IPAddress: String, iOSVersion: String) {
         if Reachability.isConnectedToNetwork() {
             self.serverRequestStart()
             
-            let params = ["code": code]
+            let params = ["code": code, "ip_address": IPAddress, "ios_version": iOSVersion]
             
-            Alamofire.request(Constants.API.CHECK_CODE, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            Alamofire.request(Constants.API.LOG_REQUEST, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
                 
                 switch response.result {
                 case .success:
@@ -78,20 +91,27 @@ class SettingsViewController: UIViewController {
                         if let json = try? JSON(data: resData) {
                             let status = json["status"].boolValue
                             if status {
-                                let checked = json["checked"].boolValue
-                                if checked {
+                                let result = json["result"].stringValue
+                                
+                                if result == "active" {
                                     DispatchQueue.main.async {
-                                        let alert = UIAlertController(title: APP_NAME, message: "Verified your code successfully!", preferredStyle: .alert)
+                                        let alert = UIAlertController(title: APP_NAME, message: "Successful! your code is active now.", preferredStyle: .alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .cancel) { action in
-                                            
-                                            // Save code
-                                            SettingManager.sharedInstance.setCode(code)
+                                            DispatchQueue.main.async {
+                                                self.getInfo(code)
+                                            }
                                         })
+                                        self.present(alert, animated: true, completion: nil)
+                                    }
+                                } else if result == "inactive" {
+                                    DispatchQueue.main.async {
+                                        let alert = UIAlertController(title: APP_NAME, message: "Sorry, your code is inactive now.", preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                                         self.present(alert, animated: true, completion: nil)
                                     }
                                 } else {
                                     DispatchQueue.main.async {
-                                        let alert = UIAlertController(title: APP_NAME, message: "Your code doesn't exist!", preferredStyle: .alert)
+                                        let alert = UIAlertController(title: APP_NAME, message: "Oops! your code doesn't exist!", preferredStyle: .alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                                         self.present(alert, animated: true, completion: nil)
                                     }
@@ -121,6 +141,50 @@ class SettingsViewController: UIViewController {
                 let alert = UIAlertController(title: APP_NAME, message: "Could not connect to the server.\nPlease check the internet connection!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func getInfo(_ code: String) {
+        // Save code
+        SettingManager.sharedInstance.setCode(code)
+        
+        self.serverRequestStart()
+        
+        Alamofire.request(Constants.API.GET_INFO + "?code=" + code, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            
+            switch response.result {
+            case .success:
+                if let resData = response.data {
+                    if let json = try? JSON(data: resData) {
+                        let status = json["status"].boolValue
+                        if status {
+                            let mainInfo = json["main"].self
+                            let servInfo = json["serv"].arrayValue
+                            let linkInfo = json["link"].arrayValue
+                            let abInfo = json["ab"].arrayValue
+                            
+                            DBManager.sharedInstance.saveData(mainInfo, servInfo, linkInfo, abInfo)
+                            
+                            DispatchQueue.main.async {
+                                SwiftEventBus.post("loadData")
+                            }
+                        } else {
+                            if let msg = json["message"].string {
+                                self.showSnackbar(message: msg)
+                            }
+                        }
+                    }
+                }
+                break
+            case .failure(let error):
+                print(error)
+                
+                break
+            }
+            
+            DispatchQueue.main.async {
+                self.serverRequestEnd()
             }
         }
     }

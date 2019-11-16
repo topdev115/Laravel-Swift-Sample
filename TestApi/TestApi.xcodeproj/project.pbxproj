@@ -19,6 +19,7 @@
 		C373FCE0237CE417007AF794 /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCDF237CE417007AF794 /* DetailInfoViewController.swift */; };
 		C373FCE2237CE429007AF794 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCE1237CE429007AF794 /* SettingsViewController.swift */; };
 		C373FCE4237D1DDF007AF794 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCE3237D1DDF007AF794 /* Utils.swift */; };
+		C3AA1D89237E62F400ADC29C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AA1D88237E62F300ADC29C /* DBManager.swift */; };
 		C3ABD5A1237BC56E00C9C257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABD5A0237BC56E00C9C257 /* AppDelegate.swift */; };
 		C3ABD5A6237BC56E00C9C257 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3ABD5A4237BC56E00C9C257 /* Main.storyboard */; };
 		C3ABD5A8237BC58000C9C257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3ABD5A7237BC58000C9C257 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		0E00A810D6B504F1A765509D /* Pods_TestApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C30DF1E8237E84BE00422900 /* TestApi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApi-Bridging-Header.h"; sourceTree = "<group>"; };
 		C373FCCE237C7131007AF794 /* SettingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		C373FCCF237C7131007AF794 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		C373FCD0237C7131007AF794 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -38,6 +40,7 @@
 		C373FCDF237CE417007AF794 /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		C373FCE1237CE429007AF794 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C373FCE3237D1DDF007AF794 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C3AA1D88237E62F300ADC29C /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		C3ABD59D237BC56E00C9C257 /* TestApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3ABD5A0237BC56E00C9C257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3ABD5A5237BC56E00C9C257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,16 +80,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C373FCCA237C6DEB007AF794 /* Common */ = {
+		C30DF1E7237E668E00422900 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				C373FCD3237C7131007AF794 /* Constants.swift */,
-				C373FCCE237C7131007AF794 /* SettingManager.swift */,
 				C373FCD2237C7131007AF794 /* Extensions.swift */,
 				C373FCD1237C7131007AF794 /* Helper.swift */,
 				C373FCD0237C7131007AF794 /* Reachability.swift */,
 				C373FCCF237C7131007AF794 /* LoadingIndicatorView.swift */,
 				C373FCDB237C7968007AF794 /* PaddingTextField.swift */,
+				C30DF1E8237E84BE00422900 /* TestApi-Bridging-Header.h */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		C373FCCA237C6DEB007AF794 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C373FCD3237C7131007AF794 /* Constants.swift */,
+				C373FCCE237C7131007AF794 /* SettingManager.swift */,
+				C3AA1D88237E62F300ADC29C /* DBManager.swift */,
 				C373FCE3237D1DDF007AF794 /* Utils.swift */,
 			);
 			path = Common;
@@ -135,6 +147,7 @@
 			children = (
 				C3ABD5A0237BC56E00C9C257 /* AppDelegate.swift */,
 				C373FCCA237C6DEB007AF794 /* Common */,
+				C30DF1E7237E668E00422900 /* Custom */,
 				C373FCCB237C6DF9007AF794 /* MainPart */,
 				C373FCCC237C6E00007AF794 /* Resource */,
 				C3ABD5AC237BC58100C9C257 /* Info.plist */,
@@ -175,6 +188,7 @@
 				TargetAttributes = {
 					C3ABD59C237BC56E00C9C257 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -259,6 +273,7 @@
 				C373FCD5237C7131007AF794 /* SettingManager.swift in Sources */,
 				C373FCD8237C7131007AF794 /* Helper.swift in Sources */,
 				C373FCD6237C7131007AF794 /* LoadingIndicatorView.swift in Sources */,
+				C3AA1D89237E62F400ADC29C /* DBManager.swift in Sources */,
 				C373FCD9237C7131007AF794 /* Extensions.swift in Sources */,
 				C373FCDC237C7968007AF794 /* PaddingTextField.swift in Sources */,
 				C373FCE0237CE417007AF794 /* DetailInfoViewController.swift in Sources */,
@@ -414,6 +429,7 @@
 			baseConfigurationReference = FE7F52ABEE24F19FCDBE2A69 /* Pods-TestApi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5Z4N8AWW2;
 				INFOPLIST_FILE = TestApi/Info.plist;
@@ -423,6 +439,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.paul.TestApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestApi/Custom/TestApi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -433,6 +451,7 @@
 			baseConfigurationReference = DA24B0AEF6C7AE903A94D8E0 /* Pods-TestApi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5Z4N8AWW2;
 				INFOPLIST_FILE = TestApi/Info.plist;
@@ -442,6 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.paul.TestApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestApi/Custom/TestApi-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

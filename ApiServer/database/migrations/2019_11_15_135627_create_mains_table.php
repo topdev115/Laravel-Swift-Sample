@@ -16,17 +16,17 @@ class CreateMainsTable extends Migration
         Schema::create('mains', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('code_id');
-            $table->string('firstName', 255)->nullable();
-            $table->string('lastName', 255)->nullable();
+            $table->string('first_name', 255)->nullable();
+            $table->string('last_name', 255)->nullable();
             $table->string('email')->nullable();
-            $table->string('phoneNumber', 255)->nullable();
+            $table->string('phone_number', 255)->nullable();
             $table->string('birthday', 255)->nullable();
             $table->string('country', 255)->nullable();
             $table->string('address', 255)->nullable();
             $table->string('company', 255)->nullable();
             $table->string('url', 255)->nullable();
-            $table->string('creditCardType', 255)->nullable();
-            $table->string('creditCardNumber', 255)->nullable();
+            $table->string('credit_card_type', 255)->nullable();
+            $table->string('credit_card_number', 255)->nullable();
             $table->string('picture1', 255)->nullable();
             $table->string('picture2', 255)->nullable();
             $table->timestamps();

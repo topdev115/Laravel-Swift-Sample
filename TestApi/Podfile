@@ -16,6 +16,9 @@ target 'TestApi' do
   # A lightweight, pure-Swift library for downloading and caching images from the web.
   pod 'Kingfisher'
   
+  # A type-safe, Swift-language layer over SQLite3.
+  pod 'SQLite.swift'
+  
   # A publish/subscribe EventBus optimized for iOS
   pod 'SwiftEventBus'
 

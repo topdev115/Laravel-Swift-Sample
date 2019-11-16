@@ -7,7 +7,7 @@
 
 import UIKit
 
-let APP_NAME = "Test Api".localizedString
+let APP_NAME = "Test Api"
 
 struct Constants {
     
@@ -17,9 +17,7 @@ struct Constants {
         static let MAIN_URL = "http://localhost:8000"
         static let API_URL = MAIN_URL + "/api"
         
-        static let CHECK_CODE = API_URL + "/check-code"
-        static let HOME_DATA = API_URL + "/home-data"
-        static let SERV_DATA = API_URL + "/serv-data"
-        static let AB_DATA = API_URL + "/ab-data"
+        static let LOG_REQUEST = API_URL + "/log-request"
+        static let GET_INFO = API_URL + "/info"
     }
 }

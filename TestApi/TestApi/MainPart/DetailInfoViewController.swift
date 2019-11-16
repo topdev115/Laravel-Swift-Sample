@@ -11,81 +11,30 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
+import SwiftEventBus
+
 class DetailInfoViewController: UITableViewController {
     
     var category: String!
     
-    private var detailInfo: Array<JSON> = Array()
+    private var detailInfo: [Dictionary<String, String?>]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = category + " Information"
         
-        self.tableView.refreshControl = UIRefreshControl()
-        self.tableView.refreshControl!.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        loadData()
         
-        self.loadData()
-    }
-    
-    @objc private func refreshData(_ sender: Any) {
-        self.loadData()
-        self.tableView.refreshControl?.endRefreshing()
+        SwiftEventBus.onMainThread(self, name: "loadData") { notification in
+            self.loadData()
+        }
     }
     
     func loadData() {
-        if Reachability.isConnectedToNetwork() {
-            
-            if let code = SettingManager.sharedInstance.code {
-                self.serverRequestStart()
-                
-                let apiUrl = category == "Serv" ? Constants.API.SERV_DATA : Constants.API.AB_DATA
-                
-                Alamofire.request(apiUrl, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-                    
-                    switch response.result {
-                    case .success:
-                        if let resData = response.data {
-                            if let json = try? JSON(data: resData) {
-                                let status = json["status"].boolValue
-                                if status {
-                                    self.detailInfo = json["data"].arrayValue
-                                    
-                                    DispatchQueue.main.async {
-                                        self.tableView.reloadData()
-                                    }
-                                } else {
-                                    if let msg = json["message"].string {
-                                        self.showSnackbar(message: msg)
-                                    }
-                                }
-                            }
-                        }
-                        break
-                    case .failure(let error):
-                        print(error)
-                        
-                        break
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.serverRequestEnd()
-                    }
-                }
-            } else {
-                //empty code
-                self.showSnackbar(message: "Empty code.")
-            }
-        } else {            
-            // network disconnected
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: APP_NAME, message: "Could not connect to the server.\nPlease check the internet connection!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+        detailInfo = category == "Serv" ? DBManager.sharedInstance.servInfo : DBManager.sharedInstance.abInfo
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -108,10 +57,10 @@ class DetailInfoViewController: UITableViewController {
             let data = detailInfo[indexPath.row]
             // set text fields
             for n in 1...cell.dataFields.count {
-                cell.dataFields[n - 1].text = data["text_field\(n)"].string
+                cell.dataFields[n - 1].text = data["text_field\(n)"] as? String
             }
             // set image fields
-            cell.imageView1.kf.setImage(with: getImageURL(imagePath: data["image_field1"].string))
+            cell.imageView1.kf.setImage(with: getImageURL(imagePath: data["image_field1"] as? String))
             
             return cell
         } else {
@@ -120,10 +69,10 @@ class DetailInfoViewController: UITableViewController {
             let data = detailInfo[indexPath.row]
             // set text fields
             for n in 1...cell.dataFields.count {
-                cell.dataFields[n - 1].text = data["text_field\(n)"].string
+                cell.dataFields[n - 1].text = data["text_field\(n)"] as? String
             }
             // set image fields
-            cell.imageView1.kf.setImage(with: getImageURL(imagePath: data["image_field1"].string))
+            cell.imageView1.kf.setImage(with: getImageURL(imagePath: data["image_field1"] as? String))
             
             return cell
         }

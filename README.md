@@ -1,6 +1,7 @@
 # Laravel-Swift-Sample
 
 ![](https://img.shields.io/badge/sample%20project-v1.0-blue)
+
 The Swift App Sample with Laravel RESTful API.
 
 ## Contents

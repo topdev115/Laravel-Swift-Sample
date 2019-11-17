@@ -7,10 +7,7 @@
 
 import UIKit
 
-import Alamofire
-import SwiftyJSON
 import Kingfisher
-
 import SwiftEventBus
 
 class DetailInfoViewController: UITableViewController {

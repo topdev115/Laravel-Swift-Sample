@@ -47,12 +47,7 @@ class SettingsViewController: UIViewController {
 
     @IBAction func onLogRequest(_ sender: UIButton) {
         view.endEditing(true)
-        
-        print(getIPAddress(for: .ipv4))
-        print(getIPAddress(for: .ipv6))
-        print(getIPAddress(for: .cellular))
-        print(getIPAddress(for: .wifi))
-        
+                
         if !isValidCode(code: codeTextField.text!) {
             codeTextField.warning()
             
@@ -62,10 +57,10 @@ class SettingsViewController: UIViewController {
             
             return
         }
-        
-        let ipAddress = getIPAddress(for: .ipv4) ?? ""
+                
+        let ipAddress = getIPAddress(for: .wifi) ?? ""
         let version = UIDevice.current.systemVersion
-        
+
         logRequest(code: codeTextField.text!, IPAddress: ipAddress, iOSVersion: version)
     }
     
@@ -126,6 +121,12 @@ class SettingsViewController: UIViewController {
                     break
                 case .failure(let error):
                     print(error)
+                    
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: APP_NAME, message: "Oops! No server", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                     
                     break
                 }

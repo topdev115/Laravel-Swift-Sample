@@ -7,10 +7,7 @@
 
 import UIKit
 
-import Alamofire
-import SwiftyJSON
 import Kingfisher
-
 import SwiftEventBus
 
 class HomeViewController: UIViewController {
@@ -38,9 +35,9 @@ class HomeViewController: UIViewController {
         
         loadData()
         
-        SwiftEventBus.onMainThread(self, name: "loadData") { notification in
-            self.loadData()
-        }
+SwiftEventBus.onMainThread(self, name: "loadData") { notification in
+    self.loadData()
+}
     }
     
     func loadData() {

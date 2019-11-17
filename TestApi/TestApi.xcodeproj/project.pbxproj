@@ -11,7 +11,6 @@
 		C373FCD5237C7131007AF794 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCCE237C7131007AF794 /* SettingManager.swift */; };
 		C373FCD6237C7131007AF794 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCCF237C7131007AF794 /* LoadingIndicatorView.swift */; };
 		C373FCD7237C7131007AF794 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCD0237C7131007AF794 /* Reachability.swift */; };
-		C373FCD8237C7131007AF794 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCD1237C7131007AF794 /* Helper.swift */; };
 		C373FCD9237C7131007AF794 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCD2237C7131007AF794 /* Extensions.swift */; };
 		C373FCDA237C7131007AF794 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCD3237C7131007AF794 /* Constants.swift */; };
 		C373FCDC237C7968007AF794 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCDB237C7968007AF794 /* PaddingTextField.swift */; };
@@ -32,7 +31,6 @@
 		C373FCCE237C7131007AF794 /* SettingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		C373FCCF237C7131007AF794 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		C373FCD0237C7131007AF794 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		C373FCD1237C7131007AF794 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C373FCD2237C7131007AF794 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C373FCD3237C7131007AF794 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C373FCDB237C7968007AF794 /* PaddingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
@@ -84,11 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				C373FCD2237C7131007AF794 /* Extensions.swift */,
-				C373FCD1237C7131007AF794 /* Helper.swift */,
 				C373FCD0237C7131007AF794 /* Reachability.swift */,
 				C373FCCF237C7131007AF794 /* LoadingIndicatorView.swift */,
 				C373FCDB237C7968007AF794 /* PaddingTextField.swift */,
-				C30DF1E8237E84BE00422900 /* TestApi-Bridging-Header.h */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -146,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				C3ABD5A0237BC56E00C9C257 /* AppDelegate.swift */,
+				C30DF1E8237E84BE00422900 /* TestApi-Bridging-Header.h */,
 				C373FCCA237C6DEB007AF794 /* Common */,
 				C30DF1E7237E668E00422900 /* Custom */,
 				C373FCCB237C6DF9007AF794 /* MainPart */,
@@ -271,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C373FCD5237C7131007AF794 /* SettingManager.swift in Sources */,
-				C373FCD8237C7131007AF794 /* Helper.swift in Sources */,
 				C373FCD6237C7131007AF794 /* LoadingIndicatorView.swift in Sources */,
 				C3AA1D89237E62F400ADC29C /* DBManager.swift in Sources */,
 				C373FCD9237C7131007AF794 /* Extensions.swift in Sources */,

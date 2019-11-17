@@ -16,9 +16,9 @@ func getImageURL(imagePath: String?) -> URL? {
 
 enum Network: String {
     case wifi = "en0"
-    case cellular = "pdp_ip0"
-    case ipv4 = "ipv4"
-    case ipv6 = "ipv6"
+//    case cellular = "pdp_ip0"
+//    case ipv4 = "ipv4"
+//    case ipv6 = "ipv6"
 }
 
 // Return IP address

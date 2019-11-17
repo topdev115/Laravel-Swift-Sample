@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/sample%20project-v1.0-blue)
 The Swift App Sample with Laravel RESTful API.
 
-![](https://res.cloudinary.com/ddyyw1ytz/image/upload/v1573950930/screenshot-1_jqizzo.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/v1573950930/screenshot-2_kemr40.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/v1573950931/screenshot-3_i2uc8x.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/v1573950931/screenshot-4_dogysc.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/v1573950931/screenshot-5_zf5v8m.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/v1573950930/screenshot-6_r8v2u5.png)
+![](https://res.cloudinary.com/ddyyw1ytz/image/upload/c_fit,w_250/v1573950930/screenshot-1_jqizzo.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/c_fit,w_250/v1573950930/screenshot-2_kemr40.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/c_fit,w_250/v1573950931/screenshot-3_i2uc8x.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/c_fit,w_250/v1573950931/screenshot-4_dogysc.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/c_fit,w_250/v1573950931/screenshot-5_zf5v8m.png)![](https://res.cloudinary.com/ddyyw1ytz/image/upload/c_fit,w_250/v1573950930/screenshot-6_r8v2u5.png)
 
 ## Contents
 - [Laravel](https://laravel.com/) Project for RESTful API (6.5.1 released) - [ApiServer]

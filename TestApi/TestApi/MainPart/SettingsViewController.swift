@@ -205,6 +205,12 @@ extension SettingsViewController: UITextFieldDelegate {
         
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textField.text = (textField.text! as NSString).replacingCharacters(in: range, with: string.uppercased())
+
+        return false
+    }
 }
 
 // MARK: Keyboard Handling

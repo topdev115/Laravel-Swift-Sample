@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3095A7556DC972B44A1B6EAB /* Pods_TestApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E00A810D6B504F1A765509D /* Pods_TestApi.framework */; };
+		C3573B60239123DB00A23AE2 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3573B5F239123DB00A23AE2 /* TabController.swift */; };
+		C3573B622391257700A23AE2 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3573B612391257700A23AE2 /* OtherViewController.swift */; };
+		C3573B6423912B3300A23AE2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3573B6323912B3300A23AE2 /* BaseViewController.swift */; };
 		C373FCD5237C7131007AF794 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCCE237C7131007AF794 /* SettingManager.swift */; };
 		C373FCD6237C7131007AF794 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCCF237C7131007AF794 /* LoadingIndicatorView.swift */; };
 		C373FCD7237C7131007AF794 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373FCD0237C7131007AF794 /* Reachability.swift */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		0E00A810D6B504F1A765509D /* Pods_TestApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30DF1E8237E84BE00422900 /* TestApi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestApi-Bridging-Header.h"; sourceTree = "<group>"; };
+		C3573B5F239123DB00A23AE2 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
+		C3573B612391257700A23AE2 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
+		C3573B6323912B3300A23AE2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C373FCCE237C7131007AF794 /* SettingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		C373FCCF237C7131007AF794 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		C373FCD0237C7131007AF794 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -103,8 +109,11 @@
 		C373FCCB237C6DF9007AF794 /* MainPart */ = {
 			isa = PBXGroup;
 			children = (
+				C3573B5F239123DB00A23AE2 /* TabController.swift */,
+				C3573B6323912B3300A23AE2 /* BaseViewController.swift */,
 				C373FCDD237CE3EC007AF794 /* HomeViewController.swift */,
 				C373FCDF237CE417007AF794 /* DetailInfoViewController.swift */,
+				C3573B612391257700A23AE2 /* OtherViewController.swift */,
 				C373FCE1237CE429007AF794 /* SettingsViewController.swift */,
 			);
 			path = MainPart;
@@ -267,14 +276,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3573B60239123DB00A23AE2 /* TabController.swift in Sources */,
 				C373FCD5237C7131007AF794 /* SettingManager.swift in Sources */,
 				C373FCD6237C7131007AF794 /* LoadingIndicatorView.swift in Sources */,
 				C3AA1D89237E62F400ADC29C /* DBManager.swift in Sources */,
 				C373FCD9237C7131007AF794 /* Extensions.swift in Sources */,
+				C3573B6423912B3300A23AE2 /* BaseViewController.swift in Sources */,
 				C373FCDC237C7968007AF794 /* PaddingTextField.swift in Sources */,
 				C373FCE0237CE417007AF794 /* DetailInfoViewController.swift in Sources */,
 				C373FCDE237CE3EC007AF794 /* HomeViewController.swift in Sources */,
 				C373FCD7237C7131007AF794 /* Reachability.swift in Sources */,
+				C3573B622391257700A23AE2 /* OtherViewController.swift in Sources */,
 				C3ABD5A1237BC56E00C9C257 /* AppDelegate.swift in Sources */,
 				C373FCDA237C7131007AF794 /* Constants.swift in Sources */,
 				C373FCE2237CE429007AF794 /* SettingsViewController.swift in Sources */,

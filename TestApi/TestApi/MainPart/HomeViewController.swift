@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SwiftEventBus
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
     @IBOutlet weak var mainInfoTableView: UITableView!
     @IBOutlet weak var mainInfoTableViewHeight: NSLayoutConstraint!
@@ -35,9 +35,9 @@ class HomeViewController: UIViewController {
         
         loadData()
         
-SwiftEventBus.onMainThread(self, name: "loadData") { notification in
-    self.loadData()
-}
+        SwiftEventBus.onMainThread(self, name: "loadData") { notification in
+            self.loadData()
+        }
     }
     
     func loadData() {

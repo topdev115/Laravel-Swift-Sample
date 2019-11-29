@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SwiftEventBus
 
-class DetailInfoViewController: UITableViewController {
+class DetailInfoViewController: BaseTableViewController {
     
     var category: String!
     

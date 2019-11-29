@@ -12,14 +12,17 @@ import SwiftyJSON
 
 import SwiftEventBus
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: BaseViewController {
     @IBOutlet weak var codeTextField: PaddingTextField!
     @IBOutlet weak var getInfoButton: UIButton!
+    @IBOutlet weak var syncDarkModeSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        syncDarkModeSwitch.isOn = SettingManager.sharedInstance.isSyncDarkMode
+        
         codeTextField.delegate = self
         
         codeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -196,6 +199,11 @@ class SettingsViewController: UIViewController {
     
     @IBAction func onTappedBackground(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    @IBAction func onSyncColor(_ sender: UISwitch) {
+        SettingManager.sharedInstance.setIsSyncDarkMode(sender.isOn)
+        SwiftEventBus.post("setUIStyle")
     }
 }
 

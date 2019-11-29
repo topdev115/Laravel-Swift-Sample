@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::post('api/log-request', 'RestAPIController@postLogRequest');
+Route::post('api/check-code', 'RestAPIController@postCheckCode');
 Route::get('api/info', 'RestAPIController@getInfo');

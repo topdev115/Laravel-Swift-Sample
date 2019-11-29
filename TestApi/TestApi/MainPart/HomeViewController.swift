@@ -21,6 +21,9 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var linkInfoTableView: UITableView!
     @IBOutlet weak var linkInfoTableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var redBoxHeight: NSLayoutConstraint!
+    
     var mainInfo: Dictionary<String, String?>?
     var linkInfo: [Dictionary<String, String?>]!
     
@@ -33,10 +36,27 @@ class HomeViewController: BaseViewController {
         let tapABInfo = UITapGestureRecognizer(target: self, action: #selector(onABInfo))
         abInfoButton.addGestureRecognizer(tapABInfo)
         
+        setupRedBox()
         loadData()
         
         SwiftEventBus.onMainThread(self, name: "loadData") { notification in
             self.loadData()
+        }
+        
+        SwiftEventBus.onMainThread(self, name: "redBox") { notification in
+            self.setupRedBox()
+        }
+    }
+    
+    func setupRedBox() {
+        if SettingManager.sharedInstance.isRedBox {
+            // show
+            errorLabel.text = Constants.ERROR_MESSAGE
+            redBoxHeight.constant = 60
+        } else {
+            // hide
+            errorLabel.text = ""
+            redBoxHeight.constant = 0
         }
     }
     

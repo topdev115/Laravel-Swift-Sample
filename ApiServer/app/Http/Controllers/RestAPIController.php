@@ -46,6 +46,29 @@ class RestAPIController extends Controller
         return response()->json($response);
     }
 
+    public function postCheckCode(Request $request) {
+        try {
+            $code = $request->input('code');
+
+            $valid_code = ClientCode::where('code', '=', $code)->first();
+
+            if ($valid_code != null) {
+                $result = $valid_code->status ? "active" : "inactive";
+            } else {
+                $result = "invalid_code";
+            }
+
+            $response['status'] = true;
+            $response['result'] = $result;
+
+        } catch (\Exception $e) {
+            $response['status'] = false;
+            $response['message'] = $e->getMessage(); //"Server Error";
+        }
+        
+        return response()->json($response);
+    }
+
     public function getInfo(Request $request)
     {
         try {

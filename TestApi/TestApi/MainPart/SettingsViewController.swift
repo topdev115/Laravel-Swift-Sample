@@ -23,6 +23,8 @@ class SettingsViewController: BaseViewController {
         // Do any additional setup after loading the view.
         syncDarkModeSwitch.isOn = SettingManager.sharedInstance.isSyncDarkMode
         
+        codeTextField.text = "8074"
+        
         codeTextField.delegate = self
         
         codeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

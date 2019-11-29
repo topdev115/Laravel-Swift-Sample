@@ -16,7 +16,7 @@ class CreateLogRequestsTable extends Migration
         Schema::create('log_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code', 4)->nullable();
-            $table->string('ip_address', 32)->nullable();
+            $table->string('ip_address', 64)->nullable();
             $table->string('ios_version', 32)->nullable();
             $table->string('result', 16)->nullable();
             $table->string('time', 32);

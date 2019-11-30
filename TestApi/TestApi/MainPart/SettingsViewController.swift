@@ -68,7 +68,7 @@ class SettingsViewController: BaseViewController {
     }
     
     func isValidCode(code: String) -> Bool {
-        if code.count == 4 && code.isNumeric {
+        if code.count == 4 && code.isAlphaNumeric {
             return true
         } else {
             return false

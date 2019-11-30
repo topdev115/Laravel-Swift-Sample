@@ -25,6 +25,8 @@ struct Constants {
     static let X = 1 //timeframe (in hour)
     static let W = 1 //timeframemultiple
     
+    static let SUPPRESSABLE = false
+    
     static let SUP_ACTIVE_MESSAGE = "Code is now active."
     static let SUP_INACTIVE_MESSAGE1 = "Code is inactive now. Will check again later."
     static let SUP_INACTIVE_MESSAGE2 = "Code is inactive and it's been more than %d hours."

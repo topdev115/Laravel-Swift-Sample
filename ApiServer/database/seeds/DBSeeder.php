@@ -37,17 +37,17 @@ class DBSeeder extends Seeder
 
             $newMain = new Main([
                 'code_id'   => $newCodeId,
-                'firstName'   => $faker->firstName,
-                'lastName'   => $faker->lastName,
+                'first_name'   => $faker->firstName,
+                'last_name'   => $faker->lastName,
                 'email'   => $faker->email,
-                'phoneNumber'   => $faker->phoneNumber,
+                'phone_number'   => $faker->phoneNumber,
                 'birthday'   => $faker->date('Y-m-d', 'now'),
                 'country'   => $faker->country,
                 'address'   => $faker->address,
                 'company'   => $faker->company,
                 'url'   => $faker->url,
-                'creditCardType'   => $faker->creditCardType,
-                'creditCardNumber'   => $faker->creditCardNumber,
+                'credit_card_type'   => $faker->creditCardType,
+                'credit_card_number'   => $faker->creditCardNumber,
                 'picture1'   => $image_path[rand(0, $image_count - 1)],
                 'picture2'   => $image_path[rand(0, $image_count - 1)]
             ]);

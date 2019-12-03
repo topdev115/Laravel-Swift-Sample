@@ -20,9 +20,7 @@ class TabController: UITabBarController {
             self.setUIStyle()
         }
         
-        SwiftEventBus.onMainThread(self, name: "checkCode") { notification in
-            self.checkCode()
-        }
+        self.checkCode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +80,7 @@ class TabController: UITabBarController {
                                         }
                                     } else if result == "inactive" {
                                         if SettingManager.sharedInstance.invalidLastTime != nil {
-                                            let dT = Int(Date().timeIntervalSince1970 - SettingManager.sharedInstance.invalidLastTime!.timeIntervalSince1970) / 60
+                                            let dT = Int(Date().timeIntervalSince1970 - SettingManager.sharedInstance.invalidLastTime!.timeIntervalSince1970) / 3600
                                             
                                             if dT >= Constants.W * Constants.X {
                                                 if !Constants.SUPPRESSABLE {

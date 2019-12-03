@@ -96,6 +96,10 @@ class SettingsViewController: BaseViewController {
                                         let alert = UIAlertController(title: APP_NAME, message: "Successful! your code is active now.", preferredStyle: .alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .cancel) { action in
                                             DispatchQueue.main.async {
+                                                SettingManager.sharedInstance.setInvalidLastTime(nil)
+                                                SettingManager.sharedInstance.setIsRedBox(false)
+                                                SwiftEventBus.post("redBox")
+                                                
                                                 self.getInfo(code)
                                             }
                                         })
